@@ -20,6 +20,9 @@ dependencies:
   '@mantine/hooks':
     specifier: ^7.9.0
     version: 7.9.0(react@19.0.0-beta-1beb73de0f-20240503)
+  mantine-form-zod-resolver:
+    specifier: ^1.1.0
+    version: 1.1.0(@mantine/form@7.9.0)(zod@3.23.6)
   next:
     specifier: 14.3.0-canary.40
     version: 14.3.0-canary.40(react-dom@19.0.0-beta-1beb73de0f-20240503)(react@19.0.0-beta-1beb73de0f-20240503)
@@ -1449,6 +1452,17 @@ packages:
     dependencies:
       kind-of: 6.0.3
     dev: true
+
+  /mantine-form-zod-resolver@1.1.0(@mantine/form@7.9.0)(zod@3.23.6):
+    resolution: {integrity: sha512-hidTuYq6agSF5XbkcVVcr0mkGs9ki/x8OC9ldZMxGLVGja6bdl+x4k1hCNrigCG90DBoMDnu0bo3hprGBBlUZA==}
+    engines: {node: '>=16.6.0'}
+    peerDependencies:
+      '@mantine/form': '>=7.0.0'
+      zod: '>=3.0.0'
+    dependencies:
+      '@mantine/form': 7.9.0(react@19.0.0-beta-1beb73de0f-20240503)
+      zod: 3.23.6
+    dev: false
 
   /map-cache@0.2.2:
     resolution: {integrity: sha512-8y/eV9QQZCiyn1SprXSrCmqJN0yNRATe+PO8ztwqrvrbdRLA3eYJF0yaR0YayLWkMbsQSKWS9N2gPcGEc4UsZg==}

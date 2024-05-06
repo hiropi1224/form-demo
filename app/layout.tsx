@@ -1,6 +1,12 @@
 import "@mantine/core/styles.css";
 
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import {
+  ColorSchemeScript,
+  Container,
+  Group,
+  MantineProvider,
+} from "@mantine/core";
+import Link from "next/link";
 
 export const metadata = {
   title: "My App",
@@ -18,7 +24,15 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>
+          <Container>
+            <Group>
+              <Link href="/conform">conformフォーム</Link>
+              <Link href="/mantine">mantineフォーム</Link>
+            </Group>
+            {children}
+          </Container>
+        </MantineProvider>
       </body>
     </html>
   );

@@ -1,11 +1,11 @@
 import { Title } from "@mantine/core";
-import { ConformForm } from "~/app/conform/conform-form";
+import { MantineForm } from "~/app/mantine/mantine-form";
 
 export default function ConformPage() {
   return (
     <>
-      <Title>Conform</Title>
-      <ConformForm />
+      <Title>Mantine</Title>
+      <MantineForm />
     </>
   );
 }

@@ -38,7 +38,7 @@ export function ConformForm() {
         error={fields.message.errors}
       />
       <Button loading={isPending} type="submit">
-        ログイン
+        送信
       </Button>
     </form>
   );
