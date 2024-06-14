@@ -7,6 +7,7 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import Link from "next/link";
+import { Toaster } from "sonner";
 
 export const metadata = {
   title: "My App",
@@ -31,6 +32,7 @@ export default function RootLayout({
               <Link href="/mantine">mantineフォーム</Link>
             </Group>
             {children}
+            <Toaster />
           </Container>
         </MantineProvider>
       </body>

@@ -1,7 +1,6 @@
 "use server";
 
 import { parseWithZod } from "@conform-to/zod";
-import { redirect } from "next/navigation";
 import { formSchema } from "~/app/schema";
 
 export async function formAction(prevState: unknown, formData: FormData) {
@@ -14,5 +13,5 @@ export async function formAction(prevState: unknown, formData: FormData) {
     return submission.reply();
   }
 
-  redirect("/success");
+  return submission.reply();
 }
