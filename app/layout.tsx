@@ -30,6 +30,7 @@ export default function RootLayout({
             <Group>
               <Link href="/conform">conformフォーム</Link>
               <Link href="/mantine">mantineフォーム</Link>
+              <Link href="/use-effect">useEffectフォーム</Link>
             </Group>
             {children}
             <Toaster />

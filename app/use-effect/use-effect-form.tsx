@@ -3,7 +3,6 @@
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { getZodConstraint, parseWithZod } from "@conform-to/zod";
 import { Button, Loader, TextInput } from "@mantine/core";
-import { redirect } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 import { formAction } from "~/app/actions";
@@ -26,7 +25,6 @@ export function UseEffectForm() {
       toast("error");
     } else if (lastResult && lastResult.status === "success") {
       toast("success");
-      redirect("/success");
     }
   }, [lastResult]);
 

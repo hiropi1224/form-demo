@@ -1,14 +1,15 @@
 "use client";
 
-import { Button, Text, TextInput } from "@mantine/core";
+import { Button, Loader, TextInput } from "@mantine/core";
 import { useForm, zodResolver } from "@mantine/form";
-import { useActionState } from "react";
-import { formAction } from "~/app/actions";
+import { useActionState, useTransition } from "react";
+import { toast } from "sonner";
+import type { z } from "zod";
+import { action } from "~/app/actions";
 import { formSchema } from "~/app/schema";
 
 export function MantineForm() {
-  const [state, action, isPending] = useActionState(formAction, undefined);
-
+  const [isPending, startTransition] = useTransition();
   const form = useForm({
     mode: "uncontrolled",
     initialValues: {
@@ -17,26 +18,22 @@ export function MantineForm() {
     },
 
     validate: zodResolver(formSchema),
-    // validateInputOnChange: true,
     validateInputOnBlur: true,
   });
 
+  const handleSubmit = (values: z.infer<typeof formSchema>) => {
+    startTransition(async () => {
+      try {
+        await action(values);
+        toast.success("success!");
+      } catch {
+        toast.error("error!");
+      }
+    });
+  };
+
   return (
-    <form
-      action={action}
-      onSubmit={(e) => {
-        try {
-          const data = new FormData(e.currentTarget);
-          const formData = Object.fromEntries(data);
-          const validatedField = formSchema.safeParse(formData);
-          if (!validatedField.success) {
-            throw new Error("invalidated");
-          }
-        } catch (error) {
-          e.preventDefault();
-        }
-      }}
-    >
+    <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
       <TextInput
         required
         withAsterisk
@@ -57,7 +54,8 @@ export function MantineForm() {
         key={form.key("message")}
         {...form.getInputProps("message")}
       />
-      <Button loading={isPending} type="submit">
+      <Button disabled={isPending} type="submit">
+        {isPending && <Loader size="sm" mr="md" />}
         送信
       </Button>
     </form>
