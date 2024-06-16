@@ -11,7 +11,14 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "cSpell.words": ["biomejs", "mantine", "nextjs", "tabler", "webp"],
+  "cSpell.words": [
+    "biomejs",
+    "mantine",
+    "nextjs",
+    "sonner",
+    "tabler",
+    "webp"
+  ],
   "css.validate": false,
   "editor.codeActionsOnSave": {
     "quickfix.biome": "always",

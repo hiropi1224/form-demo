@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { formAction } from "~/app/actions";
 import { formSchema } from "~/app/schema";
 
-export function ConformForm() {
+export function UseEffectForm() {
   const [lastResult, action, isPending] = useActionState(formAction, undefined);
 
   const [form, fields] = useForm({
@@ -20,6 +20,15 @@ export function ConformForm() {
     },
     shouldValidate: "onBlur",
   });
+
+  useEffect(() => {
+    if (lastResult && lastResult.status === "error") {
+      toast("error");
+    } else if (lastResult && lastResult.status === "success") {
+      toast("success");
+      redirect("/success");
+    }
+  }, [lastResult]);
 
   return (
     <form {...getFormProps(form)} action={action}>
