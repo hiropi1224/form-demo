@@ -1,5 +1,8 @@
 import { toast } from "sonner";
 
+/**
+ * @see https://www.robinwieruch.de/react-server-actions-toast-useactionstate/
+ */
 type Callbacks<T, R = unknown> = {
   onStart?: () => R;
   onEnd?: (reference: R) => void;
