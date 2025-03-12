@@ -6,13 +6,19 @@ import { Button, Loader, TextInput } from "@mantine/core";
 import { useActionState } from "react";
 import { formAction } from "~/app/actions";
 import { formSchema } from "~/app/schema";
+import { createToastCallbacks, withCallbacks } from "~/utils/form";
 
 export function ConformForm() {
-  const [lastResult, action, isPending] = useActionState(formAction, undefined);
+  const [lastResult, action, isPending] = useActionState(
+    withCallbacks(
+      formAction,
+      createToastCallbacks({ loadingMessage: "Loading ..." }),
+    ),
+    undefined,
+  );
 
   const [form, fields] = useForm({
     constraint: getZodConstraint(formSchema),
-    lastResult,
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: formSchema });
     },

@@ -2,7 +2,7 @@
 
 import { Button, Loader, TextInput } from "@mantine/core";
 import { useForm, zodResolver } from "@mantine/form";
-import { useActionState, useTransition } from "react";
+import { useTransition } from "react";
 import { toast } from "sonner";
 import type { z } from "zod";
 import { action } from "~/app/actions";
